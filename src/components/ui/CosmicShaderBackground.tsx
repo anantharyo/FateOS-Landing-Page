@@ -16,16 +16,17 @@ export default function CosmicShaderBackground() {
  renderer.setSize(window.innerWidth, window.innerHeight);
  container.appendChild(renderer.domElement);
 
- // Create cosmic particle system
- const particleCount = 200;
+ // Create cosmic particle system (optimized for mobile)
+ const isMobile = window.innerWidth < 768;
+ const particleCount = isMobile ? 50 : 100; // Reduce particles on mobile
  const particles = new THREE.BufferGeometry();
  const positions = new Float32Array(particleCount * 3);
  const colors = new Float32Array(particleCount * 3);
  
  for (let i = 0; i < particleCount; i++) {
-   positions[i * 3] = (Math.random() - 0.5) * 20;
-   positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-   positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+   positions[i * 3] = (Math.random() - 0.5) * (isMobile ? 15 : 20);
+   positions[i * 3 + 1] = (Math.random() - 0.5) * (isMobile ? 15 : 20);
+   positions[i * 3 + 2] = (Math.random() - 0.5) * (isMobile ? 15 : 20);
    
    // Cosmic colors (orange, blue, purple)
    const colorChoice = Math.floor(Math.random() * 3);
@@ -48,10 +49,10 @@ export default function CosmicShaderBackground() {
  particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
  
  const particleMaterial = new THREE.PointsMaterial({
-   size: 0.1,
+   size: isMobile ? 0.08 : 0.1, // Smaller particles on mobile
    vertexColors: true,
    transparent: true,
-   opacity: 0.6,
+   opacity: isMobile ? 0.4 : 0.6, // Lower opacity on mobile
    blending: THREE.AdditiveBlending
  });
  

@@ -14,7 +14,7 @@ import { siteConfig } from '../config/site';
     </div>
     
     <!-- Cosmic Cards Animation -->
-    <div class="absolute top-1/4 right-8 opacity-30 cosmic-reveal" style="animation-delay: 1.2s;">
+    <div class="absolute top-1/4 right-8 opacity-30 cosmic-reveal hidden md:block" style="animation-delay: 1.2s;">
       <div class="flex flex-col gap-4">
         <div class="cosmic-glass-card p-4 rounded-xl border border-cosmic-border animate-float" style="animation-delay: 0s;">
           <div class="text-center">
@@ -34,6 +34,13 @@ import { siteConfig } from '../config/site';
             <p class="cosmic-body text-cosmic-text-muted">Zodiac Alignment</p>
           </div>
         </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Cosmic Systems Badge -->
+    <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 cosmic-reveal md:hidden" style="animation-delay: 1.5s;">
+      <div class="cosmic-glass-card px-4 py-2 rounded-full border border-cosmic-border">
+        <p class="cosmic-body text-cosmic-text-muted text-sm">Weton • Shio • Zodiac • Numerology • Human Design</p>
       </div>
     </div>
   </div>

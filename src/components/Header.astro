@@ -42,17 +42,17 @@ import { siteConfig } from '../config/site';
       </div>
       
       <!-- Mobile Menu -->
-      <div class="md:hidden cosmic-reveal hidden" id="mobile-menu">
+      <div class="md:hidden cosmic-reveal mobile-menu-closed" id="mobile-menu">
         <div class="py-4 space-y-4 border-t border-cosmic-border mt-4">
           {siteConfig.nav.links.map((link) => (
             <a 
               href={link.href} 
-              class="cosmic-body text-cosmic-text-muted hover:text-cosmic-text block py-2 transition-colors"
+              class="cosmic-body text-cosmic-text-muted hover:text-cosmic-text block py-3 px-4 transition-colors cosmic-glass-card rounded-lg"
             >
               {link.label}
             </a>
           ))}
-          <a href={siteConfig.nav.cta.href} class="cosmic-btn cosmic-btn-primary w-full justify-center">
+          <a href={siteConfig.nav.cta.href} class="cosmic-btn cosmic-btn-primary w-full justify-center py-3">
             {siteConfig.nav.cta.label}
           </a>
         </div>

@@ -244,6 +244,111 @@ main {
   .cosmic-card {
     padding: 1.5rem;
   }
+  
+  /* Mobile Typography */
+  .cosmic-display {
+    font-size: clamp(2rem, 6vw, 4rem);
+  }
+  
+  .cosmic-heading {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+  
+  .cosmic-subheading {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+  }
+  
+  /* Mobile Layout Adjustments */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Mobile Hero */
+  .hero-zodiac-wheel {
+    transform: scale(0.6);
+  }
+  
+  /* Mobile Cosmic Cards */
+  .cosmic-glass-card {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Mobile Navigation */
+  #mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  #mobile-menu.mobile-menu-open {
+    max-height: 300px;
+  }
+  
+  /* Mobile Scroll Indicators */
+  .cosmic-scroll-indicator {
+    right: 0.5rem;
+    transform: scale(0.8);
+  }
+  
+  /* Mobile Form Optimization */
+  .cosmic-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Mobile Button Touch Targets */
+  .cosmic-btn {
+    min-height: 44px; /* Minimum touch target size */
+    min-width: 44px;
+  }
+  
+  /* Hide complex animations on mobile */
+  .cosmic-particle {
+    display: none;
+  }
+  
+  /* Simplified background for mobile */
+  .cosmic-bg::before {
+    opacity: 0.1;
+  }
+}
+
+/* Tablet Optimizations */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .cosmic-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .cosmic-display {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+  }
+  
+  .hero-zodiac-wheel {
+    transform: scale(0.8);
+  }
+}
+
+/* Ultra Mobile (Small Phones) */
+@media (max-width: 480px) {
+  .cosmic-display {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+  }
+  
+  .cosmic-card {
+    padding: 1rem;
+  }
+  
+  .cosmic-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Hide floating cards on ultra mobile */
+  .cosmic-glass-card {
+    display: none;
+  }
 }
 
 /* Cosmic Animations */
