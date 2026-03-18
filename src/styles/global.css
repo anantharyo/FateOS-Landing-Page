@@ -48,6 +48,12 @@ body {
   font-family: 'General Sans', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+main {
+  min-height: 100vh;
 }
 
 /* Cosmic Typography */
@@ -288,4 +294,81 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Improved Cosmic Animations */
+.cosmic-parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cosmic-scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.cosmic-scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Cosmic Particles */
+.cosmic-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-cosmic-accent);
+  animation: cosmicDrift 15s infinite linear;
+}
+
+@keyframes cosmicDrift {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+  50% { transform: translate(100px, 100px) rotate(180deg); opacity: 0.7; }
+  100% { transform: translate(0, 0) rotate(360deg); opacity: 0.3; }
+}
+
+/* Improved Typography Hierarchy */
+.cosmic-display-xl {
+  font-family: 'Clash Display', sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: linear-gradient(135deg, #ff6b35 0%, #00d4ff 50%, #8b5cf6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced Glass Effect */
+.cosmic-glass-enhanced {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Cosmic Scroll Indicator */
+.cosmic-scroll-indicator {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.cosmic-scroll-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-cosmic-accent);
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.cosmic-scroll-dot.active {
+  transform: scale(1.5);
+  background: var(--color-quantum-blue);
 }

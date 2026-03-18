@@ -1,0 +1,1 @@
+import{i}from"./index.wwQYJfXj.js";import{e as a}from"./index.ncxY5zeZ.js";import{s as e}from"./stagger.BdLy5-tF.js";i("#systems",()=>{a(".cosmic-reveal",{opacity:[0,1],y:[30,0],scale:[.9,1]},{duration:.8,delay:e(.15),easing:"ease-out"}),a(".cosmic-float",{y:[20,0],opacity:[0,1]},{duration:.6,delay:e(.2),easing:"ease-out"})});
