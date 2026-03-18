@@ -19,8 +19,7 @@ export const siteConfig = {
   // Hero section - Cosmic entrance
   hero: {
     badge: "Cosmic Intelligence Platform",
-    title: "Unlock Your
-Cosmic Blueprint",
+    title: "Unlock Your Cosmic Blueprint",
     subtitle: "Advanced analysis combining weton, shio, zodiac, numerology, and human design algorithms.",
     cta: {
       primary: { label: "Begin Analysis", href: "#analysis" },
