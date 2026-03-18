@@ -1,0 +1,120 @@
+---
+// src/components/PricingSection.astro - Premium Pricing Tiers
+import { siteConfig } from '../config/site';
+---
+
+<section id="pricing" class="py-20 cosmic-reveal">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="cosmic-heading text-cosmic-text mb-4">Choose Your Cosmic Path</h2>
+      <p class="cosmic-body text-cosmic-text-muted max-w-2xl mx-auto">
+        Select the level of cosmic intelligence that aligns with your journey. All plans include our advanced pattern recognition algorithms.
+      </p>
+    </div>
+    
+    <!-- Pricing Cards -->
+    <div class="cosmic-grid gap-8 max-w-5xl mx-auto">
+      {siteConfig.pricing.map((plan, index) => (
+        <div class={`cosmic-card cosmic-reveal cosmic-card-raised ${index === 1 ? 'border-cosmic-accent cosmic-glow' : ''}`} style={`animation-delay: ${index * 0.2}s`}>
+          <!-- Popular Badge -->
+          {index === 1 && (
+            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <span class="cosmic-mono text-cosmic-accent bg-cosmic-void px-3 py-1 rounded-full border border-cosmic-accent text-sm cosmic-glow">
+                MOST POPULAR
+              </span>
+            </div>
+          )}
+          
+          <!-- Plan Header -->
+          <div class="text-center mb-6">
+            <h3 class="cosmic-subheading text-cosmic-text mb-2">{plan.name}</h3>
+            <div class="flex items-baseline justify-center gap-2">
+              <span class="cosmic-display text-4xl">{plan.price}</span>
+              <span class="cosmic-body text-cosmic-text-muted">one-time</span>
+            </div>
+            <p class="cosmic-body text-cosmic-text-muted mt-2">{plan.description}</p>
+          </div>
+          
+          <!-- Features List -->
+          <ul class="space-y-3 mb-8">
+            {plan.features.map((feature, featureIndex) => (
+              <li class="flex items-center cosmic-reveal" style={`animation-delay: ${(index * 0.2) + (featureIndex * 0.05)}s`}>
+                <svg class="w-5 h-5 text-cosmic-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="cosmic-body text-cosmic-text">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <!-- CTA Button -->
+          <button class={`cosmic-btn w-full ${index === 1 ? 'cosmic-btn-primary' : 'cosmic-btn-secondary'}`}>
+            Choose {plan.name}
+          </button>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Enterprise Note -->
+    <div class="cosmic-reveal mt-12 text-center" style="animation-delay: 0.8s;">
+      <p class="cosmic-body text-cosmic-text-muted">
+        Need enterprise-level cosmic analysis? <a href="#contact" class="text-cosmic-accent hover:underline">Contact us for custom solutions</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Pricing-specific styles */
+  .pricing-card-popular {
+    position: relative;
+    transform: scale(1.05);
+    z-index: 10;
+  }
+  
+  .pricing-card-popular::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-cosmic-orange);
+    border-radius: 1rem;
+    z-index: -1;
+    opacity: 0.3;
+  }
+</style>
+
+<script>
+  import { animate, stagger, inView } from 'motion';
+  
+  // Pricing section animations
+  inView("#pricing", () => {
+    animate(
+      ".cosmic-reveal",
+      { opacity: [0, 1], y: [20, 0], scale: [0.95, 1] },
+      { duration: 0.7, delay: stagger(0.1), easing: "ease-out" }
+    );
+    
+    // Popular card emphasis
+    animate(
+      ".cosmic-glow",
+      { scale: [0.98, 1.02] },
+      { duration: 2, easing: "ease-in-out", repeat: Infinity }
+    );
+  });
+  
+  // Pricing card interactions
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.cosmic-card');
+    
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        animate(card, { y: -5, scale: 1.02 }, { duration: 0.3, easing: "ease-out" });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        animate(card, { y: 0, scale: 1 }, { duration: 0.3, easing: "ease-out" });
+      });
+    });
+  });
+</script>

@@ -1,0 +1,77 @@
+---
+// src/components/Hero.astro
+import { siteConfig } from '../config/site';
+---
+
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden cosmic-reveal">
+  <!-- Cosmic Background Elements -->
+  <div class="absolute inset-0 z-0">
+    <!-- Zodiac Wheel Background -->
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div class="w-96 h-96 border-2 border-cosmic-border rounded-full opacity-20 cosmic-float"></div>
+      <div class="w-80 h-80 border-2 border-cosmic-accent rounded-full opacity-30 cosmic-float" style="animation-delay: 1s;"></div>
+      <div class="w-64 h-64 border-2 border-quantum-blue rounded-full opacity-40 cosmic-float" style="animation-delay: 2s;"></div>
+    </div>
+  </div>
+  
+  <!-- Hero Content -->
+  <div class="container mx-auto px-4 text-center relative z-10">
+    <!-- Badge -->
+    <div class="inline-block cosmic-glass px-4 py-2 rounded-full mb-8 cosmic-emerge">
+      <span class="cosmic-mono text-cosmic-accent font-medium">{siteConfig.hero.badge}</span>
+    </div>
+    
+    <!-- Main Title -->
+    <h1 class="cosmic-display mb-6 cosmic-emerge" style="animation-delay: 0.2s;">
+      {siteConfig.hero.title.split('\n').map((line, i) => (
+        <span key={i} class="block">{line}</span>
+      ))}
+    </h1>
+    
+    <!-- Subtitle -->
+    <p class="cosmic-subheading text-cosmic-text-muted mb-8 max-w-2xl mx-auto cosmic-emerge" style="animation-delay: 0.4s;">
+      {siteConfig.hero.subtitle}
+    </p>
+    
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center cosmic-emerge" style="animation-delay: 0.6s;">
+      <a href={siteConfig.hero.cta.primary.href} class="cosmic-btn cosmic-btn-primary">
+        {siteConfig.hero.cta.primary.label}
+      </a>
+      <a href={siteConfig.hero.cta.secondary.href} class="cosmic-btn cosmic-btn-secondary">
+        {siteConfig.hero.cta.secondary.label}
+      </a>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 cosmic-emerge" style="animation-delay: 0.8s;">
+    <div class="w-6 h-10 border-2 border-cosmic-border rounded-full flex justify-center">
+      <div class="w-1 h-3 bg-cosmic-accent rounded-full mt-2 animate-bounce"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hero-specific animations */
+  .hero-zodiac-wheel {
+    animation: zodiacSpin 20s linear infinite;
+  }
+  
+  @keyframes zodiacSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+</style>
+
+<script>
+  // Import motion for advanced animations
+  import { animate, stagger } from 'motion';
+  
+  // Hero entrance animation
+  animate(
+    [".cosmic-emerge"],
+    { opacity: [0, 1], y: [30, 0] },
+    { duration: 0.8, delay: stagger(0.2), easing: "ease-out" }
+  );
+</script>

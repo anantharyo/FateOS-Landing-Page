@@ -1,0 +1,94 @@
+---
+// src/pages/index.astro - Fate OS Main Page
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import AnalysisForm from '../components/AnalysisForm.astro';
+import SystemsGrid from '../components/SystemsGrid.astro';
+import PricingSection from '../components/PricingSection.astro';
+---
+
+<BaseLayout 
+  title="Fate OS - Cosmic Intelligence Platform"
+  description="Advanced cosmic analysis combining ancient wisdom with modern algorithms. Discover your cosmic blueprint through weton, shio, zodiac, numerology, and human design."
+>
+  <!-- Cosmic Header -->
+  <Header />
+  
+  <!-- Hero Section -->
+  <Hero />
+  
+  <!-- Analysis Form -->
+  <AnalysisForm />
+  
+  <!-- Systems Grid -->
+  <SystemsGrid />
+  
+  <!-- Pricing Section -->
+  <PricingSection />
+</BaseLayout>
+
+<style>
+  /* Page-specific cosmic effects */
+  .cosmic-section-spacing {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+  
+  /* Ensure proper spacing between sections */
+  section:not(:first-child) {
+    margin-top: 6rem;
+  }
+  
+  /* Cosmic parallax effect */
+  .cosmic-parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
+<script>
+  // Page-level cosmic animations
+  import { animate, scroll } from 'motion';
+  
+  // Cosmic scroll progress indicator
+  scroll(
+    animate("#scroll-progress", { scaleX: [0, 1] }),
+    { axis: "y" }
+  );
+  
+  // Cosmic page load sequence
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add cosmic particles after main content loads
+    setTimeout(() => {
+      const particlesContainer = document.getElementById('cosmic-particles');
+      if (particlesContainer) {
+        // Simple cosmic particles (will be enhanced with Three.js)
+        for (let i = 0; i < 50; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'absolute w-1 h-1 bg-cosmic-accent rounded-full opacity-40';
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = `${Math.random() * 100}%`;
+          particle.style.animation = `cosmicFloat ${3 + Math.random() * 4}s ease-in-out infinite`;
+          particle.style.animationDelay = `${Math.random() * 2}s`;
+          particlesContainer.appendChild(particle);
+        }
+      }
+    }, 1000);
+  });
+  
+  // Cosmic intersection observer for advanced animations
+  const cosmicObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('cosmic-active');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.cosmic-section').forEach(section => {
+    cosmicObserver.observe(section);
+  });
+</script>

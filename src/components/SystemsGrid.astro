@@ -1,0 +1,86 @@
+---
+// src/components/SystemsGrid.astro - Cosmic Analysis Systems
+import { siteConfig } from '../config/site';
+---
+
+<section id="systems" class="py-20 cosmic-reveal">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="cosmic-heading text-cosmic-text mb-4">Cosmic Analysis Systems</h2>
+      <p class="cosmic-body text-cosmic-text-muted max-w-3xl mx-auto">
+        Fate OS combines multiple ancient wisdom systems with modern algorithms to provide comprehensive cosmic intelligence.
+      </p>
+    </div>
+    
+    <!-- Systems Grid -->
+    <div class="cosmic-grid gap-8">
+      {siteConfig.systems.map((system, index) => (
+        <div class="cosmic-card cosmic-reveal cosmic-float" style={`animation-delay: ${index * 0.2}s`}>
+          <!-- System Icon -->
+          <div class="text-4xl mb-4 cosmic-float" style="animation-delay: ${index * 0.3}s">
+            {system.icon}
+          </div>
+          
+          <!-- System Name -->
+          <h3 class={`cosmic-subheading mb-3 text-${system.color}-500`}>
+            {system.name}
+          </h3>
+          
+          <!-- System Description -->
+          <p class="cosmic-body text-cosmic-text-muted">
+            {system.description}
+          </p>
+          
+          <!-- Cosmic Glow Effect -->
+          <div class={`absolute inset-0 rounded-xl bg-gradient-to-r from-${system.color}-500/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10`}></div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Integration Note -->
+    <div class="cosmic-reveal mt-12 text-center" style="animation-delay: 1s;">
+      <div class="cosmic-glass rounded-xl p-8 max-w-3xl mx-auto">
+        <h3 class="cosmic-subheading text-cosmic-text mb-4">Integrated Cosmic Intelligence</h3>
+        <p class="cosmic-body text-cosmic-text-muted">
+          Unlike traditional systems that analyze each discipline separately, Fate OS finds patterns across all cosmic systems to provide holistic insights.
+        </p>
+        <div class="mt-6 cosmic-btn cosmic-btn-secondary inline-block">
+          Learn About Our Algorithms
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Systems-specific animations */
+  .system-card {
+    transition: all 0.3s ease;
+  }
+  
+  .system-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--color-cosmic-accent);
+  }
+</style>
+
+<script>
+  import { animate, stagger, inView } from 'motion';
+  
+  // Systems grid animations
+  inView("#systems", () => {
+    animate(
+      ".cosmic-reveal",
+      { opacity: [0, 1], y: [30, 0], scale: [0.9, 1] },
+      { duration: 0.8, delay: stagger(0.15), easing: "ease-out" }
+    );
+    
+    // Individual card animations
+    animate(
+      ".cosmic-float",
+      { y: [20, 0], opacity: [0, 1] },
+      { duration: 0.6, delay: stagger(0.2), easing: "ease-out" }
+    );
+  });
+</script>

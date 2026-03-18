@@ -1,0 +1,101 @@
+---
+// src/layouts/BaseLayout.astro
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title, 
+  description = 'Advanced cosmic analysis combining ancient wisdom with modern algorithms.',
+  image = '/og-image.jpg'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" class="cosmic-bg cosmic-noise">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- SEO Meta -->
+    <title>{title} | Fate OS</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- View Transitions -->
+    <ViewTransitions />
+    
+    <!-- Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=General+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  
+  <body class="min-h-screen bg-cosmic-void text-cosmic-text antialiased">
+    <!-- Cosmic Particle Background (will be added as WebGL island) -->
+    <div id="cosmic-particles"></div>
+    
+    <!-- Main Content -->
+    <main class="relative z-10">
+      <slot />
+    </main>
+    
+    <!-- Cosmic Footer -->
+    <footer class="cosmic-glass border-t border-cosmic-border mt-20 py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-cosmic-text-muted cosmic-body">
+          &copy; 2026 Fate OS - Cosmic Intelligence Platform
+        </p>
+        <p class="text-cosmic-text-muted text-sm mt-2">
+          Ancient wisdom meets modern algorithms
+        </p>
+      </div>
+    </footer>
+    
+    <!-- Cosmic Motion Scripts -->
+    <script>
+      // Initialize cosmic animations after page load
+      function initCosmicAnimations() {
+        // Scroll-triggered reveals
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('cosmic-emerge');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.cosmic-reveal').forEach(el => observer.observe(el));
+      }
+
+      // Run on first load
+      initCosmicAnimations();
+
+      // Re-run after View Transitions
+      document.addEventListener('astro:page-load', initCosmicAnimations);
+    </script>
+  </body>
+</html>

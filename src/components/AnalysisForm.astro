@@ -1,0 +1,109 @@
+---
+// src/components/AnalysisForm.astro
+import { siteConfig } from '../config/site';
+---
+
+<section id="analysis" class="py-20 cosmic-reveal">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="cosmic-heading text-cosmic-text mb-4">Begin Your Cosmic Analysis</h2>
+      <p class="cosmic-body text-cosmic-text-muted max-w-2xl mx-auto">
+        Enter your cosmic data to unlock insights from multiple ancient systems combined with modern algorithms.
+      </p>
+    </div>
+    
+    <!-- Analysis Form -->
+    <div class="max-w-2xl mx-auto">
+      <form class="cosmic-grid gap-6">
+        {siteConfig.analysisFields.map((field, index) => (
+          <div class="cosmic-reveal" style={`animation-delay: ${index * 0.1}s`}>
+            <label for={field.name} class="cosmic-body text-cosmic-text block mb-2 font-medium">
+              {field.label} {field.required && <span class="text-cosmic-accent">*</span>}
+            </label>
+            <input 
+              type={field.type}
+              id={field.name}
+              name={field.name}
+              required={field.required}
+              class="cosmic-input cosmic-body"
+              placeholder={`Enter your ${field.label.toLowerCase()}...`}
+            />
+          </div>
+        ))}
+        
+        <!-- Submit Button -->
+        <div class="cosmic-reveal" style="animation-delay: 0.4s;">
+          <button 
+            type="submit" 
+            class="cosmic-btn cosmic-btn-primary w-full cosmic-glow"
+          >
+            <span class="cosmic-body font-medium">Analyze Cosmic Blueprint</span>
+          </button>
+        </div>
+      </form>
+      
+      <!-- Form Note -->
+      <div class="cosmic-reveal mt-6 text-center" style="animation-delay: 0.5s;">
+        <p class="cosmic-body text-cosmic-text-muted text-sm">
+          Your data is processed securely using advanced algorithms. No personal information is stored permanently.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Live Preview Area -->
+    <div class="cosmic-reveal mt-12" style="animation-delay: 0.6s;">
+      <div class="cosmic-card cosmic-card-raised text-center">
+        <h3 class="cosmic-subheading text-cosmic-text mb-4">Live Cosmic Preview</h3>
+        <p class="cosmic-body text-cosmic-text-muted">
+          Your cosmic chart will appear here as you enter data...
+        </p>
+        <div class="mt-4 cosmic-glass rounded-lg p-8 min-h-64 flex items-center justify-center">
+          <div class="text-cosmic-text-muted cosmic-body">
+            Enter your information above to see your cosmic blueprint
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Form-specific animations */
+  .cosmic-input:focus {
+    animation: inputGlow 0.3s ease-out;
+  }
+  
+  @keyframes inputGlow {
+    0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.3); }
+    100% { box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1); }
+  }
+</style>
+
+<script>
+  import { animate, stagger, inView } from 'motion';
+  
+  // Form field animations
+  inView("#analysis", () => {
+    animate(
+      ".cosmic-reveal",
+      { opacity: [0, 1], y: [20, 0], scale: [0.95, 1] },
+      { duration: 0.6, delay: stagger(0.1), easing: "ease-out" }
+    );
+  });
+  
+  // Live preview updates
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form');
+    const preview = document.querySelector('.cosmic-glass');
+    
+    form?.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      if (target.value.trim()) {
+        preview?.classList.add('cosmic-glow');
+      } else {
+        preview?.classList.remove('cosmic-glow');
+      }
+    });
+  });
+</script>
