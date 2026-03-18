@@ -2,6 +2,7 @@
 // src/layouts/BaseLayout.astro
 import { ViewTransitions } from 'astro:transitions';
 import '../styles/global.css';
+import CosmicShaderBackground from '../components/ui/CosmicShaderBackground';
 
 interface Props {
   title: string;
@@ -54,8 +55,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   
   <body class="min-h-screen bg-cosmic-void text-cosmic-text antialiased">
-    <!-- Cosmic Particle Background (will be added as WebGL island) -->
-    <div id="cosmic-particles"></div>
+    <!-- Cosmic Shader Background -->
+    <CosmicShaderBackground client:load />
     
     <!-- Main Content -->
     <main class="relative z-10">
