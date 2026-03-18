@@ -2,7 +2,7 @@
 // src/layouts/BaseLayout.astro
 import { ViewTransitions } from 'astro:transitions';
 import '../styles/global.css';
-import CosmicShaderBackground from '../components/ui/CosmicShaderBackground';
+import AuroraShaderBackground from '../components/ui/AuroraShaderBackground';
 
 interface Props {
   title: string;
@@ -55,8 +55,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   
   <body class="min-h-screen bg-cosmic-void text-cosmic-text antialiased">
-    <!-- Cosmic Shader Background -->
-    <CosmicShaderBackground client:load />
+    <!-- Aurora Shader Background -->
+    <AuroraShaderBackground client:visible />
     
     <!-- Main Content -->
     <main class="relative z-10">

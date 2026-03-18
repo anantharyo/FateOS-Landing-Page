@@ -1,6 +1,7 @@
 ---
 // src/components/SystemsGrid.astro - Cosmic Analysis Systems
 import { siteConfig } from '../config/site';
+import DisplayCards from '../components/ui/display-cards';
 ---
 
 <section id="systems" class="py-20 cosmic-reveal">
@@ -38,8 +39,14 @@ import { siteConfig } from '../config/site';
       ))}
     </div>
     
+    <!-- Display Cards Showcase -->
+    <div class="cosmic-reveal mt-16 text-center" style="animation-delay: 1s;">
+      <h3 class="cosmic-subheading text-cosmic-text mb-6">Interactive Systems Preview</h3>
+      <DisplayCards client:load />
+    </div>
+    
     <!-- Integration Note -->
-    <div class="cosmic-reveal mt-12 text-center" style="animation-delay: 1s;">
+    <div class="cosmic-reveal mt-12 text-center" style="animation-delay: 1.2s;">
       <div class="cosmic-glass rounded-xl p-8 max-w-3xl mx-auto">
         <h3 class="cosmic-subheading text-cosmic-text mb-4">Integrated Cosmic Intelligence</h3>
         <p class="cosmic-body text-cosmic-text-muted">
